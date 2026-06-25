@@ -16,82 +16,8 @@ from PyQt5.QtCore import Qt, QTimer, pyqtSignal, QEvent, QPoint
 from PyQt5.QtGui import QIcon, QColor, QPainter, QPolygon, QFont, QFontDatabase
 # pyautogui & keyboard 延迟导入以加速启动，见各方法内的 lazy import
 
-# Windows系统主题检测
-try:
-    import winreg
-except ImportError:
-    import _winreg as winreg
-
 # win10toast 延迟导入以加速启动，见 send_notification()
-
-
-class ThemeManager:
-    """主题管理器 - 管理明暗两套主题"""
-    
-    @staticmethod
-    def detect_system_theme():
-        """检测Windows系统当前主题"""
-        try:
-            # Windows注册表路径
-            key = winreg.OpenKey(
-                winreg.HKEY_CURRENT_USER, 
-                r"Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
-            )
-            # AppsUseLightTheme: 0=深色, 1=浅色
-            value, _ = winreg.QueryValueEx(key, "AppsUseLightTheme")
-            winreg.CloseKey(key)
-            return value == 0  # True表示深色主题
-        except (FileNotFoundError, OSError):
-            # 如果注册表项不存在，默认使用浅色主题
-            return False
-    
-    LIGHT_THEME = {
-        'name': 'light',
-        'bg_primary': '#F5F7FA',
-        'bg_secondary': '#FFFFFF',
-        'bg_card': '#FFFFFF',
-        'text_primary': '#2C3E50',
-        'text_secondary': '#5D6D7E',
-        'text_muted': '#95A5A6',
-        'accent': '#3498DB',
-        'accent_hover': '#2980B9',
-        'success': '#2ECC71',
-        'success_hover': '#27AE60',
-        'danger': '#E74C3C',
-        'danger_hover': '#C0392B',
-        'warning': '#F39C12',
-        'border': '#E8E8E8',
-        'shadow': 'rgba(0, 0, 0, 0.1)',
-        'input_bg': '#FFFFFF',
-        'input_border': '#D5D8DC',
-        'input_focus': '#3498DB',
-    }
-    
-    DARK_THEME = {
-        'name': 'dark',
-        'bg_primary': '#1A1A2E',
-        'bg_secondary': '#16213E',
-        'bg_card': '#1E293B',
-        'text_primary': '#E8E8E8',
-        'text_secondary': '#B8B8B8',
-        'text_muted': '#6B7280',
-        'accent': '#60A5FA',
-        'accent_hover': '#3B82F6',
-        'success': '#10B981',
-        'success_hover': '#059669',
-        'danger': '#EF4444',
-        'danger_hover': '#DC2626',
-        'warning': '#F59E0B',
-        'border': '#374151',
-        'shadow': 'rgba(0, 0, 0, 0.3)',
-        'input_bg': '#0F172A',
-        'input_border': '#374151',
-        'input_focus': '#60A5FA',
-    }
-    
-    @classmethod
-    def get_theme(cls, is_dark=False):
-        return cls.DARK_THEME if is_dark else cls.LIGHT_THEME
+from utils.theme_manager import ThemeManager
 
 
 class ClickThread(threading.Thread):
