@@ -17,3 +17,6 @@ build/
 # OS
 Thumbs.db
 Desktop.ini
+
+# 配置文件
+settings.json
