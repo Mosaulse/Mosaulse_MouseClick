@@ -2,8 +2,7 @@
 """
 主题管理器模块 - 管理明暗两套主题
 """
-import sys
-from typing import Dict, Any
+from typing import Dict
 
 # Windows系统主题检测
 try:
