@@ -9,7 +9,7 @@
 ## ✨ 功能特性
 
 - **自动连点** — 模拟鼠标自动点击，支持自定义间隔时间（10ms ~ 自定义）
-- **全局快捷键** — 默认 F11，支持自定义任意单键或组合键（Ctrl/Alt/Shift + 键）
+- **全局快捷键** — 默认 F9，支持自定义任意单键或组合键（Ctrl/Alt/Shift + 键）
 - **系统托盘** — 最小化自动隐藏到托盘，双击恢复，右键菜单退出
 - **明暗主题** — 自动检测 Windows 系统主题，也可手动切换
 - **现代化 UI** — 圆角卡片、渐变按钮、阴影效果
@@ -66,10 +66,25 @@
 Mosaulse_MouseClick/
 ├── main.py                    # 程序入口
 ├── models/                    # 数据模型
+│   ├── clicker_model.py       # 点击器模型
+│   └── settings_model.py      # 设置模型
 ├── views/                     # 用户界面
+│   ├── main_view.py           # 主窗口视图
+│   ├── help_view.py           # 帮助窗口视图
+│   └── components/            # UI组件
+│       ├── styled_button.py   # 样式按钮
+│       ├── styled_input.py    # 样式输入框
+│       └── card_frame.py      # 卡片容器
 ├── presenters/                # 展示者
+│   ├── main_presenter.py      # 主窗口展示者
+│   └── help_presenter.py      # 帮助窗口展示者
 ├── utils/                     # 工具类
+│   ├── theme_manager.py       # 主题管理器
+│   ├── hotkey_manager.py      # 快捷键管理器
+│   └── notification.py        # 通知管理器
 └── tests/                     # 单元测试
+    ├── test_models.py         # 模型测试
+    └── test_utils.py          # 工具类测试
 ```
 
 ## ⚙️ 构建 EXE
@@ -98,6 +113,13 @@ pyinstaller MouseClicker.spec
 ```bash
 python -m pytest tests/ -v
 ```
+
+## 📁 项目清理
+
+以下文件已被移除：
+- `create_icon.py` - 图标创建脚本
+- `svg_to_png.py` - SVG转PNG脚本
+- `mouse_clicker.log` - 日志文件
 
 ## 📄 许可证
 

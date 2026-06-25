@@ -2,11 +2,24 @@
 
 
 a = Analysis(
-    ['mouse_clicker.py'],
+    ['main.py'],
     pathex=[],
     binaries=[],
     datas=[('mouse_click_icon.png', '.')],
-    hiddenimports=[],
+    hiddenimports=[
+        'models.clicker_model',
+        'models.settings_model',
+        'views.main_view',
+        'views.help_view',
+        'views.components.styled_button',
+        'views.components.styled_input',
+        'views.components.card_frame',
+        'presenters.main_presenter',
+        'presenters.help_presenter',
+        'utils.theme_manager',
+        'utils.hotkey_manager',
+        'utils.notification',
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
