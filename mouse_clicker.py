@@ -18,32 +18,7 @@ from PyQt5.QtGui import QIcon, QColor, QPainter, QPolygon, QFont, QFontDatabase
 
 # win10toast 延迟导入以加速启动，见 send_notification()
 from utils.theme_manager import ThemeManager
-
-
-class ClickThread(threading.Thread):
-    """后台点击线程"""
-    
-    def __init__(self, interval, button='left'):
-        super().__init__()
-        self.interval = interval / 1000.0
-        self.button = button
-        self.running = False
-        # 不使用daemon线程，避免主线程退出时强制终止
-        self.daemon = False
-    
-    def run(self):
-        import pyautogui
-        pyautogui.FAILSAFE = False
-        self.running = True
-        while self.running:
-            try:
-                pyautogui.click(button=self.button)
-                time.sleep(self.interval)
-            except Exception:
-                pass
-    
-    def stop(self):
-        self.running = False
+from models.clicker_model import ClickThread
 
 
 class StyledButton(QPushButton):
