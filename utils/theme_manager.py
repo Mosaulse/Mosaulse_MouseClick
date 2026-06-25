@@ -68,7 +68,7 @@ class ThemeManager:
         try:
             key = winreg.OpenKey(
                 winreg.HKEY_CURRENT_USER, 
-                r"Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
+                r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
             )
             value, _ = winreg.QueryValueEx(key, "AppsUseLightTheme")
             winreg.CloseKey(key)
