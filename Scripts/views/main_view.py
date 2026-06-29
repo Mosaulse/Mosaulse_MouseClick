@@ -19,7 +19,7 @@ class MainView(QWidget):
     def __init__(self):
         """初始化主窗口视图"""
         super().__init__()
-        self.is_dark = ThemeManager.detect_system_theme()
+        self.is_dark = True
         self.theme = ThemeManager.get_theme(self.is_dark)
         self.tray_icon: Optional[QSystemTrayIcon] = None
         

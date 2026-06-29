@@ -12,6 +12,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from models.clicker_model import ClickerModel, ClickThread
 from models.settings_model import SettingsModel
 
+TEMP_SETTINGS = '_test_settings_temp.json'
+
 
 class TestClickerModel:
     """点击器模型测试"""
@@ -46,17 +48,17 @@ class TestSettingsModel:
 
     def test_init(self):
         """测试初始化"""
-        model = SettingsModel()
+        model = SettingsModel(TEMP_SETTINGS)
         assert model.settings == SettingsModel.DEFAULT_SETTINGS
 
     def test_get_setting(self):
         """测试获取设置"""
-        model = SettingsModel()
+        model = SettingsModel(TEMP_SETTINGS)
         assert model.get_setting('interval') == 500
         assert model.get_setting('hotkey') == 'F9'
 
     def test_set_setting(self):
         """测试设置设置"""
-        model = SettingsModel()
+        model = SettingsModel(TEMP_SETTINGS)
         model.set_setting('interval', 1000)
         assert model.get_setting('interval') == 1000

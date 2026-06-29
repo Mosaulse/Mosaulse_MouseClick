@@ -52,7 +52,7 @@ class MainPresenter(QObject):
         """加载设置"""
         self.view.interval_input.setText(str(self.settings.get_setting('interval')))
         self.view.set_hotkey(self.settings.get_setting('hotkey'))
-        self.view.is_dark = self.settings.get_setting('is_dark')
+        self.view.is_dark = True
         self.view.apply_theme()
     
     def save_settings(self) -> None:

@@ -4,7 +4,15 @@
 """
 import json
 import os
+import sys
 from typing import Dict, Any, Optional
+
+
+def _get_app_dir() -> str:
+    """获取应用目录（打包后为exe所在目录，开发时为Scripts目录）"""
+    if getattr(sys, 'frozen', False):
+        return os.path.dirname(sys.executable)
+    return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class SettingsModel:
@@ -13,7 +21,7 @@ class SettingsModel:
     DEFAULT_SETTINGS: Dict[str, Any] = {
         'interval': 500,
         'hotkey': 'F9',
-        'is_dark': False,
+        'is_dark': True,
         'button': 'left',
     }
     
@@ -21,9 +29,10 @@ class SettingsModel:
         """初始化设置模型
         
         Args:
-            settings_file: 设置文件路径
+            settings_file: 设置文件路径（相对于应用目录）
         """
-        self.settings_file = settings_file
+        app_dir = _get_app_dir()
+        self.settings_file = os.path.join(app_dir, settings_file)
         self.settings = self.DEFAULT_SETTINGS.copy()
         self.load_settings()
     

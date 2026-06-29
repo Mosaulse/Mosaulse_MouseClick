@@ -32,7 +32,7 @@
 
 3. 运行程序：
    ```bash
-   python main.py
+   python Scripts/main.py
    ```
 
 ### 直接使用
@@ -64,27 +64,32 @@
 
 ```
 Mosaulse_MouseClick/
-├── main.py                    # 程序入口
-├── models/                    # 数据模型
-│   ├── clicker_model.py       # 点击器模型
-│   └── settings_model.py      # 设置模型
-├── views/                     # 用户界面
-│   ├── main_view.py           # 主窗口视图
-│   ├── help_view.py           # 帮助窗口视图
-│   └── components/            # UI组件
-│       ├── styled_button.py   # 样式按钮
-│       ├── styled_input.py    # 样式输入框
-│       └── card_frame.py      # 卡片容器
-├── presenters/                # 展示者
-│   ├── main_presenter.py      # 主窗口展示者
-│   └── help_presenter.py      # 帮助窗口展示者
-├── utils/                     # 工具类
-│   ├── theme_manager.py       # 主题管理器
-│   ├── hotkey_manager.py      # 快捷键管理器
-│   └── notification.py        # 通知管理器
-└── tests/                     # 单元测试
-    ├── test_models.py         # 模型测试
-    └── test_utils.py          # 工具类测试
+├── Scripts/                   # 源码目录
+│   ├── main.py                # 程序入口
+│   ├── models/                # 数据模型
+│   │   ├── clicker_model.py   # 点击器模型
+│   │   └── settings_model.py  # 设置模型
+│   ├── views/                 # 用户界面
+│   │   ├── main_view.py       # 主窗口视图
+│   │   ├── help_view.py       # 帮助窗口视图
+│   │   └── components/        # UI组件
+│   │       ├── styled_button.py
+│   │       ├── styled_input.py
+│   │       └── card_frame.py
+│   ├── presenters/            # 展示者
+│   │   ├── main_presenter.py  # 主窗口展示者
+│   │   └── help_presenter.py  # 帮助窗口展示者
+│   ├── utils/                 # 工具类
+│   │   ├── theme_manager.py   # 主题管理器
+│   │   ├── hotkey_manager.py  # 快捷键管理器
+│   │   └── notification.py    # 通知管理器
+│   └── tests/                 # 单元测试
+│       ├── test_models.py     # 模型测试
+│       └── test_utils.py      # 工具类测试
+├── Resources/                 # 资源文件
+│   └── mouse_click_icon.png   # 应用图标
+├── MouseClicker.spec          # PyInstaller 打包配置
+└── requirements.txt           # 依赖列表
 ```
 
 ## ⚙️ 构建 EXE
@@ -111,7 +116,7 @@ pyinstaller MouseClicker.spec
 ## 🧪 运行测试
 
 ```bash
-python -m pytest tests/ -v
+python -m pytest Scripts/tests/ -v
 ```
 
 ## 📁 项目清理
