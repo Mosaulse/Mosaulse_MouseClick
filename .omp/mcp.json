@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem"
+      ]
+    },
+    "everything-search": {
+      "command": "uvx",
+      "args": [
+        "mcp-everything-search"
+      ]
+    },
+    "codegraph": {
+      "command": "codegraph",
+      "args": [
+        "serve",
+        "--mcp"
+      ],
+      "directTools": true
+    },
+    "unityMCP": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8080/mcp",
+      "enabled": true
+    }
+  }
+}

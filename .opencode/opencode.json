@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md"],
+  "plugin": [
+    "oh-my-openagent"
+  ],
+  "references": {
+    "docs": {
+      "path": "docs",
+      "description": "架构设计文档与实现计划"
+    }
+  },
+  "lsp": {
+    "python": {
+      "command": ["basedpyright", "--stdio"],
+      "extensions": ["py"],
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/Scripts"
+      }
+    }
+  }
+}

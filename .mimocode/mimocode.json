@@ -1,11 +1,8 @@
 {
   "$schema": "https://mimo.xiaomi.com/mimocode/config.json",
-  "model": "anthropic/claude-sonnet",
-  "model_groups": {
-    "lite": "anthropic/claude-haiku",
-    "standard": "anthropic/claude-sonnet",
-    "ultra": "anthropic/claude-opus-4-8"
-  },
+  "plugin": [
+    "oh-my-openagent"
+  ],
   "permission": {
     "bash": {
       "*": "ask",
@@ -77,11 +74,5 @@
       }
     }
   },
-  "instructions": ["AGENTS.md"],
-  "references": {
-    "docs": {
-      "path": "docs",
-      "description": "架构设计文档与实现计划"
-    }
-  }
+  "instructions": ["AGENTS.md"]
 }

@@ -1,0 +1,44 @@
+symbolPreset: nerd
+
+modelRoles: 
+  default: opencode-zen/mimo-v2.5-free
+  tiny: opencode-zen/deepseek-v4-flash-free
+  slow: opencode-zen/mimo-v2.5-free
+  vision: opencode-zen/mimo-v2.5-free
+  plan: opencode-zen/mimo-v2.5-free
+  designer: opencode-zen/mimo-v2.5-free
+  commit: opencode-zen/deepseek-v4-flash-free
+  task: opencode-zen/deepseek-v4-flash-free
+  advisor: opencode-zen/deepseek-v4-flash-free
+  smol: opencode-zen/deepseek-v4-flash-free
+
+project:
+  name: MouseClicker
+  type: desktop-application
+  language: python
+  framework: PyQt5
+  platform: windows-only
+
+workflows:
+  code-review:
+    enabled: true
+    require-tests: false
+  commit:
+    style: chinese-conventional
+  testing:
+    framework: pytest
+    command: python -m pytest Scripts/tests/ -v
+
+tools:
+  git:
+    default-branch: main
+  build:
+    tool: pyinstaller
+    command: pyinstaller MouseClicker.spec
+  test:
+    command: python -m pytest Scripts/tests/ -v
+
+environment:
+  python-version: "3.8+"
+  os: windows
+  shell: powershell
